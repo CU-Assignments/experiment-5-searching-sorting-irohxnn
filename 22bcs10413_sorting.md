@@ -1,31 +1,10 @@
-
 class Solution {
 public:
-    int search(std::vector<int>& nums, int target) {
-        int low = 0, high = nums.size() - 1;
-
-        while (low <= high) {
-            int mid = (low + high) / 2;
-
-            if (nums[mid] == target) {
-                return mid;
-            }
-
-            if (nums[low] <= nums[mid]) {
-                if (nums[low] <= target && target < nums[mid]) {
-                    high = mid - 1;
-                } else {
-                    low = mid + 1;
-                }
-            } else {
-                if (nums[mid] < target && target <= nums[high]) {
-                    low = mid + 1;
-                } else {
-                    high = mid - 1;
-                }
-            }
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        for (int j = 0, i = m; j<n; j++){
+            nums1[i] = nums2[j];
+            i++;
         }
-
-        return -1;
+        sort(nums1.begin(),nums1.end());
     }
 };
